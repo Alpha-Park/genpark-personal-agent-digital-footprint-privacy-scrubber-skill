@@ -1,0 +1,75 @@
+{
+  "name": "genpark-personal-agent-digital-footprint-privacy-scrubber-skill",
+  "title": "Digital Footprint & Data Broker Privacy Scrubber Skill",
+  "version": "1.0.0",
+  "description": "Personal identity exposure risk audit across public data brokers, automated CCPA/GDPR removal request synthesizer, tracking cookie fingerprint exposure analyzer, and digital footprint minimization copilot. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "organization": {
+    "name": "GenPark Inc.",
+    "url": "https://www.genpark.ai",
+    "linkedin": "https://www.linkedin.com/company/92955550"
+  },
+  "mcp_version": "2024-11-05",
+  "category": "personal-agent",
+  "tools": [
+    {
+      "name": "audit_data_broker_exposure_risk",
+      "description": "Assess personal identity exposure severity across major commercial people-search sites and data broker registries.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "has_home_address_exposed": {
+            "type": "boolean"
+          },
+          "has_phone_number_exposed": {
+            "type": "boolean"
+          },
+          "has_family_relations_exposed": {
+            "type": "boolean"
+          },
+          "known_broker_listings_count": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "has_home_address_exposed",
+          "has_phone_number_exposed",
+          "known_broker_listings_count"
+        ]
+      }
+    },
+    {
+      "name": "generate_statutory_opt_out_demand",
+      "description": "Compile formal statutory CCPA/GDPR/VCDPA opt-out and deletion notice with legal compliance citations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "consumer_full_name": {
+            "type": "string"
+          },
+          "consumer_email": {
+            "type": "string"
+          },
+          "data_broker_legal_name": {
+            "type": "string"
+          },
+          "jurisdiction": {
+            "type": "string",
+            "enum": [
+              "california_ccpa",
+              "europe_gdpr",
+              "virginia_vcdpa",
+              "general_us"
+            ]
+          }
+        },
+        "required": [
+          "consumer_full_name",
+          "consumer_email",
+          "data_broker_legal_name",
+          "jurisdiction"
+        ]
+      }
+    }
+  ]
+}
